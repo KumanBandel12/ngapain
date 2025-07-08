@@ -2291,6 +2291,12 @@ select:focus {
   border-left-color: var(--success-color);
 }
 
+.week-event.Teori{
+  background: rgba(52, 211, 153, 0.15) !important;
+  color: #34d399 !important;
+  border-left-color: #34d399 !important;
+}
+
 .week-event.Proyek {
   background: rgba(168, 85, 247, 0.15);
   color: #a855f7;
@@ -2304,6 +2310,126 @@ select:focus {
 }
 
 .week-event.Lainnya {
+  background: rgba(107, 114, 128, 0.15);
+  color: var(--subtext);
+  border-left-color: var(--subtext);
+}
+
+.event-category.Karir {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--info-color);
+  border-left-color: var(--info-color);
+}
+
+.event-category.Hobi {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+  border-left-color: var(--success-color);
+}
+
+.event-category.Kesehatan {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning-color);
+  border-left-color: var(--warning-color);
+}
+
+.event-category.Tugas {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger-color);
+  border-left-color: var(--danger-color);
+}
+
+.event-category.Pendidikan {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+  border-left-color: #8b5cf6;
+}
+
+.event-category.Keuangan {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+  border-left-color: var(--success-color);
+}
+
+.event-category.Teori{
+  background: rgba(52, 211, 153, 0.15) !important;
+  color: #34d399 !important;
+  border-left-color: #34d399 !important;
+}
+
+.event-category.Proyek {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+  border-left-color: #a855f7;
+}
+
+.event-category.Praktikum {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+  border-left-color: #ec4899;
+}
+
+.event-category.Lainnya {
+  background: rgba(107, 114, 128, 0.15);
+  color: var(--subtext);
+  border-left-color: var(--subtext);
+}
+
+body.dark .event-category.Karir {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--info-color);
+  border-left-color: var(--info-color);
+}
+
+body.dark .event-category.Hobi {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+  border-left-color: var(--success-color);
+}
+
+body.dark .event-category.Kesehatan {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning-color);
+  border-left-color: var(--warning-color);
+}
+
+body.dark .event-category.Tugas {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger-color);
+  border-left-color: var(--danger-color);
+}
+
+body.dark .event-category.Pendidikan {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+  border-left-color: #8b5cf6;
+}
+
+body.dark .event-category.Keuangan {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+  border-left-color: var(--success-color);
+}
+
+body.dark .event-category.Proyek {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+  border-left-color: #a855f7;
+}
+
+body.dark .event-category.Teori{
+  background: rgba(52, 211, 153, 0.15) !important;
+  color: #34d399 !important;
+  border-left-color: #34d399 !important;
+}
+
+body.dark .event-category.Praktikum {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+  border-left-color: #ec4899;
+}
+
+body.dark .event-category.Lainnya {
   background: rgba(107, 114, 128, 0.15);
   color: var(--subtext);
   border-left-color: var(--subtext);

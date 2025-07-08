@@ -3116,7 +3116,7 @@ function showEventDetails(eventId) {
   if (event.originalData && event.originalData.tasks && event.originalData.tasks.length > 0) {
     detailsHTML += `<p><strong>Sub Tugas:</strong></p><ul style="margin: 8px 0; padding-left: 20px;">`
     event.originalData.tasks.forEach((task) => {
-      detailsHTML += `<li style="margin: 4px 0;">${task.title} - ${task.completed ? "✅" : "⏳"} (${task.priority})</li>`
+      detailsHTML += `<li style="margin: 4px 0; color: var(--primary-color)">${task.title} - ${task.completed ? "✅" : "⏳"} (${task.priority})</li>`
     })
     detailsHTML += `</ul>`
   }
