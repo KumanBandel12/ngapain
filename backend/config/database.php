@@ -2,8 +2,8 @@
 class Database {
     private $host = "localhost";
     private $db_name = "ngapain_db";
-    private $username = "root"; 
-    private $password = ""; 
+    private $username = "projec15_root"; 
+    private $password = "@kaesquare123"; 
     public $conn;
 
     public function getConnection() {

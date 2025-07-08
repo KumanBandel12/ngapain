@@ -276,7 +276,7 @@ function request_password_reset($db, $data) {
             'expires_at' => $expires_at
         ]);
 
-        $reset_link = "http://localhost/frontend/pages/reset-password.html?token=" . $token;
+        $reset_link = "http://ngapain.project2ks2.my.id/frontend/pages/reset-password.html?token=" . $token;
         
         echo json_encode([
             'success' => true, 

@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = "http://localhost/backend/api";
+const API_BASE_URL = "http://ngapain.project2ks2.my.id/backend/api";
 
 // User session management
 class UserSession {
