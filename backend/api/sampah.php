@@ -72,7 +72,7 @@ function getTrashItems($db, $user_id) {
 
         // Query dasar untuk mengambil item sampah milik user
         $query = "SELECT sampah_id, tipe, dihapus_pada, kadaluarsa_pada, data_asli 
-                  FROM Sampah 
+                  FROM sampah 
                   WHERE user_id = :user_id";
 
         // Tambahkan klausa LIKE jika ada kata kunci pencarian
@@ -125,7 +125,7 @@ function restoreTrashItem($db, $sampah_id, $user_id) {
     $db->beginTransaction();
     
     try {
-        $stmt = $db->prepare("SELECT tipe, data_asli FROM Sampah WHERE sampah_id = :id AND user_id = :uid");
+        $stmt = $db->prepare("SELECT tipe, data_asli FROM sampah WHERE sampah_id = :id AND user_id = :uid");
         $stmt->execute(['id' => $sampah_id, 'uid' => $user_id]);
         $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -217,7 +217,7 @@ function restoreTrashItem($db, $sampah_id, $user_id) {
         }
         
         // Hapus dari sampah
-        $delete_stmt = $db->prepare("DELETE FROM Sampah WHERE sampah_id = :id");
+        $delete_stmt = $db->prepare("DELETE FROM sampah WHERE sampah_id = :id");
         if (!$delete_stmt->execute(['id' => $sampah_id])) {
             throw new Exception("Gagal menghapus data dari sampah setelah dipulihkan.");
         }
@@ -239,7 +239,7 @@ function deleteTrashItem($db, $sampah_id, $user_id) {
             return;
         }
 
-        $stmt = $db->prepare("DELETE FROM Sampah WHERE sampah_id = :id AND user_id = :uid");
+        $stmt = $db->prepare("DELETE FROM sampah WHERE sampah_id = :id AND user_id = :uid");
         $stmt->execute(['id' => $sampah_id, 'uid' => $user_id]);
 
         if ($stmt->rowCount() > 0) {
@@ -256,7 +256,7 @@ function deleteTrashItem($db, $sampah_id, $user_id) {
 
 function emptyTrash($db, $user_id) {
     try {
-        $stmt = $db->prepare("DELETE FROM Sampah WHERE user_id = :uid");
+        $stmt = $db->prepare("DELETE FROM sampah WHERE user_id = :uid");
         $stmt->execute(['uid' => $user_id]);
         echo json_encode(["success" => true, "message" => "Sampah berhasil dikosongkan."]);
     } catch (Exception $e) {
@@ -267,7 +267,7 @@ function emptyTrash($db, $user_id) {
 
 function cleanupExpired($db, $user_id) {
     try {
-        $stmt = $db->prepare("DELETE FROM Sampah WHERE user_id = :uid AND kadaluarsa_pada <= CURDATE()");
+        $stmt = $db->prepare("DELETE FROM sampah WHERE user_id = :uid AND kadaluarsa_pada <= CURDATE()");
         $stmt->execute(['uid' => $user_id]);
         echo json_encode(["success" => true, "message" => "Item kedaluwarsa berhasil dihapus."]);
     } catch (Exception $e) {

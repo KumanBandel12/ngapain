@@ -1340,7 +1340,6 @@ body.dark .content-body:hover::-webkit-scrollbar-thumb {
 
 .goal-card.completed {
     opacity: 0.8;
-    background: rgba(16, 185, 129, 0.1);
 }
 
 .goal-card.completed::before {
@@ -2696,6 +2695,68 @@ body.dark .mini-month-header {
   background: var(--sidebar-background);
   color: var(--primary-color);
   border-bottom-color: var(--border-color);
+}
+
+/* =================================== */
+/* KONSISTENSI WARNA DARK MODE         */
+/* =================================== */
+body.dark .event-item.Karir,
+body.dark .goal-category.Karir {
+    background: rgba(59, 130, 246, 0.15) !important;
+    color: var(--info-color) !important;
+}
+
+body.dark .event-item.Hobi,
+body.dark .goal-category.Hobi {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: var(--success-color) !important;
+}
+
+body.dark .event-item.Kesehatan,
+body.dark .goal-category.Kesehatan {
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: var(--warning-color) !important;
+}
+
+body.dark .event-item.Tugas, body.dark .goal-category.Tugas,
+body.dark .goal-category.Hubungan {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: var(--danger-color) !important;
+}
+
+body.dark .event-item.Pendidikan,
+body.dark .goal-category.Pendidikan {
+    background: rgba(139, 92, 246, 0.15) !important;
+    color: #8b5cf6 !important;
+}
+
+body.dark .event-item.Keuangan,
+body.dark .goal-category.Keuangan {
+    background: rgba(23, 162, 184, 0.15) !important;
+    color: #17a2b8 !important;
+}
+
+body.dark .event-item.Proyek,
+body.dark .goal-category.Proyek {
+    background: rgba(168, 85, 247, 0.15) !important;
+    color: #a855f7 !important;
+}
+
+body.dark .event-item.Praktikum,
+body.dark .goal-category.Praktikum {
+    background: rgba(236, 72, 153, 0.15) !important;
+    color: #ec4899 !important;
+}
+
+body.dark .goal-category.Teori {
+    background: rgba(52, 211, 153, 0.15) !important;
+    color: #34d399 !important;
+}
+
+body.dark .event-item.Lainnya,
+body.dark .goal-category.Lainnya {
+    background: rgba(107, 114, 128, 0.15) !important;
+    color: var(--subtext) !important;
 }
 
 /* Animation untuk transisi yang smooth */
