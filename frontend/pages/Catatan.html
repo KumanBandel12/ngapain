@@ -1,0 +1,178 @@
+<body>
+    <div class="content-header">
+        <h1 class="content-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5z"/>
+                <line x1="9" y1="9" x2="15" y2="9" />
+                <line x1="9" y1="13" x2="15" y2="13" />
+            </svg>
+            Catatan
+        </h1>
+        <p class="content-subtitle">Kelola dan atur semua catatan penting Anda</p>
+    </div>
+
+    <div class="content-body">
+        <div class="notes-container">
+            <!-- Simplified Header -->
+            <div class="notes-header">
+                <div class="header-info">
+                    <h2 class="section-title">Daftar Catatan</h2>
+                    <p class="content-subtitle">Catatan ide dan informasi penting</p>
+                </div>
+                
+                <div class="header-actions">
+                    <!-- Simple Search -->
+                    <div class="search-wrapper">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input 
+                            type="search" 
+                            id="searchNotes" 
+                            placeholder="Cari catatan..." 
+                            class="search-input"
+                        >
+                    </div>
+                    
+                    <!-- View Toggle -->
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" onclick="changeNotesView('grid')" title="Tampilan Grid">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                        </button>
+                        <button class="view-btn" data-view="list" onclick="changeNotesView('list')" title="Tampilan List">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"/>
+                                <line x1="8" y1="12" x2="21" y2="12"/>
+                                <line x1="8" y1="18" x2="21" y2="18"/>
+                                <line x1="3" y1="6" x2="3.01" y2="6"/>
+                                <line x1="3" y1="12" x2="3.01" y2="12"/>
+                                <line x1="3" y1="18" x2="3.01" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <button class="add-note-btn" onclick="openNoteModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Catatan Baru
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notes Grid -->
+            <div class="notes-grid view-grid" id="notesGrid">
+                <!-- Notes will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-illustration">
+                    <svg style="width: 120px; height: 120px; color: var(--border-color);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5z"/>
+                        <line x1="12" y1="9" x2="12" y2="15" />
+                        <line x1="9" y1="12" x2="15" y2="12" />
+                    </svg>
+                </div>
+                <h3 class="empty-state-title">Belum Ada Catatan</h3>
+                <p class="empty-state-description">
+                    Mulai membuat catatan untuk menyimpan ide, pemikiran,<br>
+                    dan informasi penting Anda
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Note -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="noteModalTitle" style="color: var(--primary-color);">Tambah Catatan Baru</h3>
+                <button class="close-btn" onclick="closeNoteModal()">×</button>
+            </div>
+            
+            <form id="noteForm" class="note-form">
+                <div class="form-group">
+                    <label class="form-label" for="noteTitle">
+                        Judul Catatan <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="noteTitle" 
+                        class="form-input" 
+                        placeholder="Berikan judul yang deskriptif..." 
+                        required
+                        maxlength="100"
+                    >
+                    <div class="form-error" id="titleError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="noteContent">
+                        Isi Catatan <span class="required">*</span>
+                    </label>
+                    <textarea 
+                        id="noteContent" 
+                        class="form-textarea" 
+                        placeholder="Tulis catatan Anda di sini..." 
+                        rows="8"
+                        required
+                        maxlength="5000"
+                    ></textarea>
+                    <div class="form-error" id="contentError"></div>
+                    <div class="character-count">
+                        <span id="contentCount">0</span>/5000 karakter
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="noteCategory">Kategori</label>
+                    <select id="noteCategory" class="form-select">
+                        <option value="Personal">Personal</option>
+                        <option value="Kerja">Kerja</option>
+                        <option value="Ide">Ide</option>  
+                        <option value="Penting">Penting</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label" style="color: var(--primary-color);">
+                        <input type="checkbox" id="noteIsPinned" class="form-checkbox">
+                        <span class="checkbox-custom"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-pin-angle" viewBox="0 0 16 16" id="Pin-Angle--Streamline-Bootstrap" height="16" width="16">
+                            <path d="M9.828 0.722a0.5 0.5 0 0 1 0.354 0.146l4.95 4.95a0.5 0.5 0 0 1 0 0.707c-0.48 0.48 -1.072 0.588 -1.503 0.588 -0.177 0 -0.335 -0.018 -0.46 -0.039l-3.134 3.134a6 6 0 0 1 0.16 1.013c0.046 0.702 -0.032 1.687 -0.72 2.375a0.5 0.5 0 0 1 -0.707 0l-2.829 -2.828 -3.182 3.182c-0.195 0.195 -1.219 0.902 -1.414 0.707s0.512 -1.22 0.707 -1.414l3.182 -3.182 -2.828 -2.829a0.5 0.5 0 0 1 0 -0.707c0.688 -0.688 1.673 -0.767 2.375 -0.72a6 6 0 0 1 1.013 0.16l3.134 -3.133a3 3 0 0 1 -0.04 -0.461c0 -0.43 0.108 -1.022 0.589 -1.503a0.5 0.5 0 0 1 0.353 -0.146m0.122 2.112v-0.002zm0 -0.002v0.002a0.5 0.5 0 0 1 -0.122 0.51L6.293 6.878a0.5 0.5 0 0 1 -0.511 0.12H5.78l-0.014 -0.004a5 5 0 0 0 -0.288 -0.076 5 5 0 0 0 -0.765 -0.116c-0.422 -0.028 -0.836 0.008 -1.175 0.15l5.51 5.509c0.141 -0.34 0.177 -0.753 0.149 -1.175a5 5 0 0 0 -0.192 -1.054l-0.004 -0.013v-0.001a0.5 0.5 0 0 1 0.12 -0.512l3.536 -3.535a0.5 0.5 0 0 1 0.532 -0.115l0.096 0.022c0.087 0.017 0.208 0.034 0.344 0.034q0.172 0.002 0.343 -0.04L9.927 2.028q-0.042 0.172 -0.04 0.343a1.8 1.8 0 0 0 0.062 0.46z" stroke-width="1"></path>
+                        </svg>
+                        Sematkan catatan ini di atas
+                    </label>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeNoteModal()">Batal</button>
+                    <button type="submit" class="btn-primary">Simpan Catatan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Note Preview -->
+    <div class="modal" id="notePreviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="previewTitle" style="color: var(--primary-color);">Preview Catatan</h3>
+                <button class="close-btn" onclick="closePreviewModal()">×</button>
+            </div>
+            
+            <div class="preview-body" id="previewContent">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+</body>

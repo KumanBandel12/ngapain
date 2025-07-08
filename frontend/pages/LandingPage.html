@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Ngapain? - Solusi Cerdas untuk Mencapai Tujuan Anda</title>
+    <link rel="stylesheet" href="/frontend/style/LandingPage.css">
+    <link rel="icon" type="image/x-icon" href="/frontend/img/logo.png">
+</head>
+<body>
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <img src="../img/logo.png" alt="logo">
+                <div class="logo">Ngapain?</div>
+            </div>
+            <nav class="navbar">
+                <a href="#home">Beranda</a>
+                <a href="#features">Fitur</a>
+                <a href="#footer">Tentang</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="login-btn">Masuk</a>
+                <a href="register.html" class="register-btn">Daftar</a>
+            </div>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Beranda</a>
+            <a href="#features">Fitur</a>
+            <a href="#footer">Tentang</a>
+            <a href="login.html" class="mobile-login">Masuk</a>
+            <a href="register.html" class="mobile-register">Daftar</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Solusi Cerdas untuk Mencapai Tujuan Anda</h1>
+                <p class="hero-subtitle">Bangun kebiasaan produktif dengan dashboard yang mendukung setiap langkah menuju tujuan Anda</p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn-primary">Mulai Sekarang</a>
+                    <a href="#dashboard-insight" class="btn-secondary">Pelajari Lebih Lanjut</a> 
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Insight Section -->
+        <section id="dashboard-insight" class="insight-section">
+            <div class="container">
+                <h2 class="section-title">Dashboard yang Memahami Kebutuhan Anda</h2>
+                <div class="insight-grid">
+                    <div class="insight-card">
+                        <div class="insight-icon">📈</div>
+                        <h3>Analisis Mendalam</h3>
+                        <p>Dashboard kami memberikan wawasan mendalam tentang progress harian, mingguan, dan bulanan Anda dengan visualisasi data yang mudah dipahami.</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">🎯</div>
+                        <h3>Pelacakan Tujuan</h3>
+                        <p>Pantau pencapaian tujuan Anda secara real-time dengan indikator progress yang jelas dan motivasi harian yang personal.</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">📄</div>
+                        <h3>Laporan Komprehensif</h3>
+                        <p>Dapatkan laporan detail tentang produktivitas, kebiasaan, dan area yang perlu diperbaiki untuk mencapai tujuan optimal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Fitur Unggulan Ngapain?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon goal-breakdown">🎯</div>
+                        <h3>Goal Breakdown System</h3>
+                        <p>Membuat tujuan besar yang bisa drag-and-drop, breakdown ke milestone & task kecil dengan deadline & prioritas setiap task.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon notes">📝</div>
+                        <h3>Catatan</h3>
+                        <p>Fitur menulis catatan penting seperti jurnal harian untuk merekam perjalanan dan refleksi Anda.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon progress">📊</div>
+                        <h3>Progress Visualizer</h3>
+                        <p>Visualisasi progress dengan persentase tercapai dan progress bar yang mudah dipahami.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon themes">🎨</div>
+                        <h3>Tema & Personalisasi</h3>
+                        <p>Dark mode & light mode, kategori dengan warna tertentu, dan live search.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon backup">☁️</div>
+                        <h3>Sistem Akun & Backup</h3>
+                        <p>Login dengan email dan penyimpanan cloud/database untuk menjaga data Anda tetap aman.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon planner">📅</div>
+                        <h3>Daily Planner Otomatis</h3>
+                        <p>Rekomendasi to-do harian berdasarkan deadline dan prioritas untuk produktivitas optimal.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon trash">🗑️</div>
+                        <h3>Fitur Sampah</h3>
+                        <p>Melihat task atau goal yang dihapus dengan otomatis hilang setelah 30 hari untuk keamanan data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Siap Memulai Perjalanan Produktif Anda?</h2>
+                <p>Bergabunglah dengan ribuan pengguna yang telah merasakan manfaat Ngapain?</p>
+                <a href="register.html" class="btn-primary large">Daftar Gratis Sekarang</a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ngapain?</h3>
+                    <p>Solusi cerdas untuk mencapai tujuan hidup Anda dengan dashboard yang intuitif dan fitur-fitur canggih.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Facebook-1--Streamline-Core-Remix" height="24" width="24">
+                                <g id="Free Remix/Computer Devices/facebook-1--media-facebook-social">
+                                    <path id="Union" fill="#000000" fill-rule="evenodd" d="M2.973994285714286 2.973994285714286C3.09456 2.853445714285714 3.258068571428571 2.7857142857142856 3.4285714285714284 2.7857142857142856h17.142857142857142c0.17057142857142857 0 0.33394285714285715 0.06773142857142857 0.4546285714285714 0.18827999999999998 0.12051428571428571 0.12056571428571429 0.1882285714285714 0.28407428571428567 0.1882285714285714 0.45457714285714285v17.142857142857142c0 0.17057142857142857 -0.06771428571428571 0.33394285714285715 -0.1882285714285714 0.4546285714285714 -0.12068571428571429 0.12051428571428571 -0.28405714285714284 0.1882285714285714 -0.4546285714285714 0.1882285714285714H15.428571428571427V15.445714285714285h1.6457142857142855c0.27737142857142855 0 0.5432571428571429 -0.11017714285714283 0.7393714285714286 -0.3062742857142857 0.1961142857142857 -0.1961142857142857 0.30634285714285714 -0.46210285714285715 0.30634285714285714 -0.73944v-1.32c0 -0.13733142857142858 -0.027085714285714286 -0.2733085714285714 -0.07954285714285714 -0.4001828571428571 -0.05262857142857143 -0.12687428571428572 -0.1296 -0.2421428571428571 -0.2268 -0.33924 -0.09702857142857142 -0.09711428571428571 -0.21239999999999998 -0.17413714285714285 -0.3392571428571428 -0.22669714285714285 -0.12685714285714284 -0.05254285714285714 -0.2628 -0.07959428571428571 -0.4001142857142857 -0.07959428571428571h-1.5771428571428572v-1.1828571428571426c0 -1.44 0.6514285714285714 -1.44 1.3028571428571427 -1.44h1.2685714285714285c0.13799999999999998 0.005691428571428571 0.2754857142857143 -0.019011428571428568 0.4028571428571428 -0.07232571428571428 0.12737142857142858 -0.05331428571428571 0.24154285714285711 -0.13397142857142855 0.3342857142857143 -0.23624571428571425 0.0996 -0.0948342857142857 0.17845714285714284 -0.20933142857142856 0.23159999999999997 -0.3362057142857143 0.05314285714285714 -0.12687428571428572 0.07937142857142857 -0.2634 0.07697142857142857 -0.4009371428571428v-1.2685714285714285c0.004628571428571429 -0.1395942857142857 -0.01834285714285714 -0.2787257142857143 -0.06771428571428571 -0.4094228571428571 -0.049199999999999994 -0.1307142857142857 -0.12359999999999999 -0.25044 -0.21925714285714287 -0.35233714285714285 -0.09548571428571428 -0.10187999999999998 -0.21017142857142856 -0.18395999999999998 -0.33737142857142854 -0.24150857142857143S18.225257142857142 6.004422857142857 18.085714285714285 6c-0.1865142857142857 0 -0.378 -0.0020228571428571426 -0.5727428571428571 -0.004062857142857143 -1.7134971428571428 -0.01805142857142857 -3.6860742857142856 -0.03882857142857143 -4.904691428571428 1.286862857142857 -1.0795542857142857 1.1744228571428572 -1.0539599999999998 2.606982857142857 -1.0278 4.071531428571428 0.004045714285714285 0.22616571428571425 0.00809142857142857 0.4531028571428571 0.00809142857142857 0.6799542857142856h-1.5257142857142856c-0.1387542857142857 -0.00228 -0.27658285714285713 0.02309142857142857 -0.40544571428571424 0.07462285714285714 -0.12886285714285714 0.05153142857142857 -0.24617142857142857 0.1281942857142857 -0.3450857142857143 0.22553142857142858 -0.09893142857142856 0.09733714285714284 -0.17749714285714283 0.21337714285714285 -0.23112 0.34138285714285715 -0.053622857142857146 0.12800571428571428 -0.08122285714285714 0.2654057142857143 -0.08120571428571428 0.40417714285714285v1.32c-0.00001714285714285714 0.13878857142857143 0.02758285714285714 0.27617142857142857 0.08120571428571428 0.40417714285714285 0.053622857142857146 0.12800571428571428 0.1321885714285714 0.24404571428571425 0.23112 0.34138285714285715 0.0989142857142857 0.09733714285714284 0.2162228571428571 0.17400000000000002 0.3450857142857143 0.22553142857142858 0.12886285714285714 0.05153142857142857 0.2666914285714286 0.07690285714285713 0.40544571428571424 0.07462285714285714h1.5257142857142856v5.768571428571429H3.4285714285714284c-0.17050285714285715 0 -0.33401142857142857 -0.06771428571428571 -0.45457714285714285 -0.1882285714285714 -0.12054857142857141 -0.12068571428571429 -0.18827999999999998 -0.28405714285714284 -0.18827999999999998 -0.4546285714285714V3.4285714285714284c0 -0.17050285714285715 0.06773142857142857 -0.33401142857142857 0.18827999999999998 -0.45457714285714285ZM3.4285714285714284 0.6428571428571428c-0.738822857142857 0 -1.4473714285714285 0.2934942857142857 -1.9697982857142855 0.815916C0.9363514285714286 1.9811999999999999 0.6428571428571428 2.6897485714285714 0.6428571428571428 3.4285714285714284v17.142857142857142c0 0.7388571428571428 0.2934942857142857 1.4473714285714285 0.815916 1.9697142857142858 0.5224268571428571 0.5225142857142857 1.2309754285714285 0.816 1.9697982857142855 0.816h17.142857142857142c0.7388571428571428 0 1.4473714285714285 -0.29348571428571424 1.9697142857142858 -0.816 0.5225142857142857 -0.5223428571428571 0.816 -1.2308571428571426 0.816 -1.9697142857142858V3.4285714285714284c0 -0.738822857142857 -0.29348571428571424 -1.4473714285714285 -0.816 -1.9697982857142855C22.0188 0.9363514285714286 21.310285714285712 0.6428571428571428 20.57142857142857 0.6428571428571428H3.4285714285714284Z" clip-rule="evenodd" stroke-width="1.7143"></path>
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="X--Streamline-Simple-Icons" height="24" width="24">
+                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8 -7.584 -6.638 7.584H0.474l8.6 -9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#000000" stroke-width="1"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.855 -0.855 24 24" id="Instagram--Streamline-Core" height="24" width="24">
+                            <g id="instagram">
+                                <g id="Group 4546">
+                                <path id="Vector" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M16.45193057142857 5.801832257142856c-0.21987492857142857 0 -0.39803571428571427 -0.17820855 -0.39803571428571427 -0.39803571428571427s0.1781607857142857 -0.39803571428571427 0.39803571428571427 -0.39803571428571427" stroke-width="1.71"></path>
+                                <path id="Vector_2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M16.45193057142857 5.801832257142856c0.21987492857142857 0 0.39803571428571427 -0.17820855 0.39803571428571427 -0.39803571428571427s-0.1781607857142857 -0.39803571428571427 -0.39803571428571427 -0.39803571428571427" stroke-width="1.71"></path>
+                                </g>
+                                <path id="Rectangle 2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M1.366498002857143 5.463294921428571c0 -2.262482764285714 1.8341071757142857 -4.096602677142857 4.096605861428571 -4.096602677142857h10.924344921428572c2.262435 0 4.096583571428571 1.8341199128571428 4.096583571428571 4.096602677142857v10.924313078571428c0 2.262435 -1.8341485714285712 4.096583571428571 -4.096583571428571 4.096583571428571H5.463103864285714c-2.2624986857142857 0 -4.096605861428571 -1.8341485714285712 -4.096605861428571 -4.096583571428571V5.463294921428571Z" stroke-width="1.71"></path>
+                                <path id="Ellipse 11" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M6.8653200000000005 10.925284285714286a4.059964285714285 4.059964285714285 0 1 0 8.11992857142857 0 4.059964285714285 4.059964285714285 0 1 0 -8.11992857142857 0" stroke-width="1.71"></path>
+                            </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2025 Ngapain?. Semua hak dilindungi.</p>
+                    <div class="legal-links">
+                        <a href="#privacy">Kebijakan Privasi</a>
+                        <a href="#terms">Syarat & Ketentuan</a>
+                        <a href="#cookies">Kebijakan Cookie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tambahkan di awal script, sebelum function toggleMobileMenu()
+        // Pastikan halaman dimulai dari atas
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+
+        // Set scroll position ke atas saat halaman dimuat
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+
+        // Enable smooth scrolling hanya untuk navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial scroll position
+            window.scrollTo(0, 0);
+            
+            // Enable smooth scrolling untuk anchor links
+            document.documentElement.style.scrollBehavior = 'smooth';
+        });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            mobileMenu.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const toggle = document.querySelector('.mobile-menu-toggle');
+                mobileMenu.classList.remove('active');
+                toggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

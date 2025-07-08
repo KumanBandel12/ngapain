@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+    background: linear-gradient(135deg, #87ceeb 0%, #4a90e2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #333;
+}
+
+.login-container {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(30, 144, 255, 0.15);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(135, 206, 235, 0.2);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e90ff;
+    margin-bottom: 10px;
+}
+
+.login-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #374151;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #1e90ff;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: #718096;
+    transition: color 0.3s ease;
+}
+.password-toggle:hover {
+    color: #4a5568;
+}
+.password-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+.eye-off {
+    display: none;
+} 
+
+.forgot-password {
+    text-align: right;
+    margin-top: 8px;
+}
+
+.forgot-password a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    width: 100%;
+    background: linear-gradient(135deg, #1e90ff, #4169e1);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+    margin-bottom: 25px;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.signup-link {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.back-to-home {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.back-to-home:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .login-container, .register-container {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+
+    .back-to-home {
+        top: 20px;
+        left: 20px;
+    }
+}
+
+/* Untuk mobile view yang lebih spesifik */
+@media (max-width: 480px) {
+    body {
+        /* Pastikan body tetap menggunakan flexbox untuk memusatkan konten */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px; /* Memberi sedikit jarak dari tepi layar */
+    }
+
+    .login-container, .register-container {
+        padding: 40px 20px;
+        width: 100%;
+        margin-top: 70px; /* Menambahkan margin atas untuk memberi ruang bagi tombol */
+    }
+
+    .back-to-home {
+        position: absolute; /* Pastikan tombol tidak menggeser form */
+        top: 20px;          /* Atur posisi dari atas */
+        left: 20px;         /* Atur posisi dari kiri */
+        padding: 8px 16px;  /* Perkecil padding tombol */
+        font-size: 14px;    /* Perkecil ukuran font */
+        font-weight: 500;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .login-title, .register-title {
+        font-size: 22px;
+    }
+
+    .form-input::placeholder {
+    color: #9ca3af;
+    font-size: 12px; /* Perkecil ukuran font placeholder */
+}
+}

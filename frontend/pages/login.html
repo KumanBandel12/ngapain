@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/login.css">
+    <title>Masuk - Ngapain?</title>
+</head>
+<body>
+    <a href="LandingPage.html" class="back-to-home">← Kembali ke Beranda</a>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo">Ngapain?</div>
+            <h1 class="login-title">Selamat Datang Kembali</h1>
+            <p class="login-subtitle">Masuk ke akun Anda untuk melanjutkan perjalanan produktif</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="Masukkan email Anda"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Kata Sandi</label>
+                <div class="password-group">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="Masukkan kata sandi Anda"
+                        required
+                    >
+                    <button type="button" class="password-toggle" onclick="togglePassword()">
+                        <svg class="eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        <svg class="eye-off" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="forgot-password">
+                    <a href="forgot-password.html">Lupa kata sandi?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="login-button">
+                Masuk
+            </button>
+        </form>
+
+        <div class="signup-link">
+            Belum punya akun? <a href="register.html">Daftar sekarang</a>
+        </div>
+    </div>
+    
+    <script src="../script/api.js"></script>
+    <script>
+        // --- LOGIKA BARU UNTUK LOGIN ---
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Mencegah form mengirim data secara tradisional
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await AuthAPI.login(email, password);
+                
+                if (response.success) {
+                    // Simpan data user ke localStorage menggunakan class UserSession
+                    UserSession.setUser(response.user); 
+                    window.location.href = '../Dashboard.html';
+                } else {
+                    alert('Login gagal: ' + response.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan. ' + error.message);
+            }
+        });
+
+
+        // --- FUNGSI BANTUAN ---
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = passwordInput.nextElementSibling;
+            const eyeOpen = toggleButton.querySelector('.eye-open');
+            const eyeOff = toggleButton.querySelector('.eye-off');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeOpen.style.display = 'none';
+                eyeOff.style.display = 'block';
+            } else {
+                passwordInput.type = 'password';
+                eyeOpen.style.display = 'block';
+                eyeOff.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

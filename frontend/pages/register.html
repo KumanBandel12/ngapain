@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/register.css">
+    <title>Daftar - Ngapain?</title>
+</head>
+<body>
+    <a href="LandingPage.html" class="back-to-home">← Kembali ke Beranda</a>
+    
+    <div class="register-container">
+        <div class="register-header">
+            <div class="logo">Ngapain?</div>
+            <h1 class="register-title">Bergabung dengan Ngapain?</h1>
+            <p class="register-subtitle">Buat akun baru dan mulai perjalanan produktif Anda hari ini</p>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="fullname" class="form-label">Nama Lengkap</label>
+                <input 
+                    type="text" 
+                    id="fullname" 
+                    name="fullname" 
+                    class="form-input" 
+                    placeholder="Masukkan nama lengkap Anda"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="Masukkan email Anda"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Kata Sandi</label>
+                <div class="password-group">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="Buat kata sandi yang kuat"
+                        required
+                        minlength="8"
+                        pattern="(?=.*\d).{8,}"
+                        title="Kata sandi harus terdiri dari minimal 8 karakter dan mengandung setidaknya satu angka."
+                    >
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                        <svg class="eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        <svg class="eye-off" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="password-hint">
+                    <small>Minimal 8 karakter dengan kombinasi huruf dan angka</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password" class="form-label">Konfirmasi Kata Sandi</label>
+                <div class="password-group">
+                    <input 
+                        type="password" 
+                        id="confirm-password" 
+                        name="confirm-password" 
+                        class="form-input" 
+                        placeholder="Ulangi kata sandi Anda"
+                        required
+                        minlength="8"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <span class="checkmark"></span>
+                    Saya setuju dengan <a href="#terms" class="terms-link">Syarat & Ketentuan</a> dan <a href="#privacy" class="terms-link">Kebijakan Privasi</a>
+                </label>
+            </div>
+
+            <button type="submit" class="register-button">
+                Buat Akun
+            </button>
+        </form>
+
+        <div class="login-link">
+            Sudah punya akun? <a href="login.html">Masuk sekarang</a>
+        </div>
+    </div>
+    
+    <script src="../script/api.js"></script>
+    <script>
+        // --- LOGIKA BARU UNTUK REGISTER ---
+        document.getElementById('registerForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Mencegah form mengirim data secara tradisional
+
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const passwordRegex = /^(?=.*\d).{8,}$/;
+
+            if (!passwordRegex.test(password)) {
+                alert('Kata sandi harus terdiri dari minimal 8 karakter dan mengandung setidaknya satu angka.');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Konfirmasi kata sandi tidak cocok!');
+                return;
+            }
+
+            try {
+                const response = await AuthAPI.register(fullname, email, password);
+                if (response.success) {
+                    alert('Registrasi berhasil! Silakan masuk.');
+                    window.location.href = 'login.html'; // Arahkan ke halaman login
+                } else {
+                    // Menampilkan pesan error dari server
+                    alert('Registrasi gagal: ' + response.message);
+                }
+            } catch (error) {
+                // Menampilkan error koneksi atau error lainnya
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mencoba mendaftar. ' + error.message);
+            }
+        });
+
+        // --- FUNGSI BANTUAN ---
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = passwordInput.nextElementSibling;
+            const eyeOpen = toggleButton.querySelector('.eye-open');
+            const eyeOff = toggleButton.querySelector('.eye-off');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeOpen.style.display = 'none';
+                eyeOff.style.display = 'block';
+            } else {
+                passwordInput.type = 'password';
+                eyeOpen.style.display = 'block';
+                eyeOff.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
