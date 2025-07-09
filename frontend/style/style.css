@@ -4469,19 +4469,19 @@ background: rgba(59, 130, 246, 0.15);
   text-transform: uppercase;
 }
 
-.trash-item-type.notes {
-  background: rgba(139, 92, 246, 0.1);
-  color: #8b5cf6;
+.trash-item-type.catatan {
+  background: rgba(139, 92, 246, 0.1) !important;
+  color: #8b5cf6 !important;
 }
 
-.trash-item-type.goals {
-  background: rgba(16, 185, 129, 0.1);
-  color: #10b981;
+.trash-item-type.tujuan {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #10b981 !important;
 }
 
-.trash-item-type.tasks {
-  background: rgba(245, 158, 11, 0.1);
-  color: #f59e0b;
+.trash-item-type.tugas {
+  background: rgba(245, 158, 11, 0.1) !important;
+  color: #f59e0b !important;
 }
 
 .trash-item-meta {
