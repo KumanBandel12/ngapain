@@ -369,7 +369,7 @@ function deleteTujuan($db, $data, $user_id) {
                 'subtujuan' => $subtujuan_data
             ];
 
-            $sampah_query = "INSERT INTO Sampah (user_id, tujuan_id, tipe, dihapus_pada, kadaluarsa_pada, data_asli)
+            $sampah_query = "INSERT INTO sampah (user_id, tujuan_id, tipe, dihapus_pada, kadaluarsa_pada, data_asli)
                             VALUES (:user_id, :tujuan_id, 'tujuan', CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY), :data_asli)";
             $sampah_stmt = $db->prepare($sampah_query);
             $sampah_stmt->bindParam(":user_id", $user_id);

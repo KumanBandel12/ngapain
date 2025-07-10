@@ -6,7 +6,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Ambil semua user_id
-$stmt = $db->query("SELECT DISTINCT user_id FROM Sampah");
+$stmt = $db->query("SELECT DISTINCT user_id FROM sampah");
 $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 foreach ($user_ids as $user_id) {
