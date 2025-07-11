@@ -1350,13 +1350,12 @@ async function toggleTaskCompletion(goalIndex, taskId) {
   const goal = goals[goalIndex];
   if (!goal || !goal.tasks) return;
 
-  const task = goal.tasks.find((t) => t.id === taskId);
+  const task = goal.tasks.find((t) => t.id == taskId);
   if (task) {
       const newStatus = !task.completed;
       try {
           await TujuanAPI.updateSubtaskStatus(task.id, newStatus);
-          task.completed = newStatus; // Update status di frontend setelah sukses
-
+          task.completed = newStatus; // Update status di frontend setelah sukses 
           // Hitung ulang progress dan status tujuan utama
           const totalTasks = goal.tasks.length;
           const completedTasks = goal.tasks.filter(t => t.completed).length;
@@ -1366,7 +1365,7 @@ async function toggleTaskCompletion(goalIndex, taskId) {
           // Kirim pembaruan untuk progress tujuan utama
           await TujuanAPI.update(goal);
 
-          showNotification(`Status Sub-Tujuan "${task.title}" berhasil diperbarui.`, 'success');
+          showNotification(`Status Sub-Tujuan ${task.title} berhasil diperbarui.`, 'success');
           renderGoals(); // Render ulang untuk menampilkan perubahan
       } catch (error) {
           console.error("Gagal memperbarui status Sub-Tujuan:", error);
@@ -1395,7 +1394,7 @@ async function deleteTask(goalIndex, taskId) {
           
           // Hapus dari array di frontend
           const goal = goals[goalIndex];
-          goal.tasks = goal.tasks.filter(t => t.id !== taskId);
+          goal.tasks = goal.tasks.filter(t => t.id != taskId);
 
           // Hitung ulang progress
           const totalTasks = goal.tasks.length;
