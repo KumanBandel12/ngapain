@@ -1806,6 +1806,7 @@ body.dark .content-body:hover::-webkit-scrollbar-thumb {
 }
 
 /* Kategori Teori (untuk halaman Tugas) */
+.event-item.Teori,
 .goal-category.Teori {
     background: rgba(52, 211, 153, 0.15) !important;
     color: #34d399 !important;
@@ -2154,6 +2155,12 @@ select:focus {
   background: rgba(236, 72, 153, 0.15);
   color: #ec4899;
   border-left-color: #ec4899;
+}
+
+.event-item.Teori{
+  background: rgba(52, 211, 153, 0.15) !important;
+  color: #34d399 !important;
+  border-left-color: #34d399 !important;
 }
 
 .event-item.Lainnya {
