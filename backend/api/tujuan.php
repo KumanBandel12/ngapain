@@ -33,6 +33,80 @@ if(!$user_id) {
     exit;
 }
 
+$action = $input['action'] ?? '';
+
+if ($method == 'PUT' && $action == 'update_subtask_status') {
+    updateSubtujuanStatus($db, $input, $user_id);
+    exit;
+}
+
+if ($method == 'POST' && $action == 'delete_subtask') {
+    deleteSubtujuan($db, $input, $user_id);
+    exit;
+}
+
+function updateSubtujuanStatus($db, $data, $user_id) {
+    try {
+        $subtujuan_id = $data['subtujuan_id'];
+        $completed = !empty($data['completed']);
+
+        // Query untuk memastikan subtujuan ini milik user yang sedang login
+        $query = "UPDATE subtujuan s
+                  JOIN tujuan t ON s.tujuan_id = t.tujuan_id
+                  SET s.finish = :finish
+                  WHERE s.subtujuan_id = :subtujuan_id AND t.user_id = :user_id";
+
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(":finish", $completed, PDO::PARAM_BOOL);
+        $stmt->bindParam(":subtujuan_id", $subtujuan_id);
+        $stmt->bindParam(":user_id", $user_id);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                echo json_encode(["success" => true, "message" => "Status subtujuan berhasil diupdate."]);
+            } else {
+                http_response_code(404);
+                echo json_encode(["success" => false, "message" => "Subtujuan tidak ditemukan atau Anda tidak memiliki akses."]);
+            }
+        } else {
+            http_response_code(500);
+            echo json_encode(["success" => false, "message" => "Gagal mengupdate status subtujuan."]);
+        }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
+    }
+}
+
+function deleteSubtujuan($db, $data, $user_id) {
+    try {
+        $subtujuan_id = $data['subtujuan_id'];
+
+        $query = "DELETE s FROM subtujuan s
+                  JOIN tujuan t ON s.tujuan_id = t.tujuan_id
+                  WHERE s.subtujuan_id = :subtujuan_id AND t.user_id = :user_id";
+
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(":subtujuan_id", $subtujuan_id);
+        $stmt->bindParam(":user_id", $user_id);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                echo json_encode(["success" => true, "message" => "Subtujuan berhasil dihapus."]);
+            } else {
+                http_response_code(404);
+                echo json_encode(["success" => false, "message" => "Subtujuan tidak ditemukan atau Anda tidak memiliki akses."]);
+            }
+        } else {
+            http_response_code(500);
+            echo json_encode(["success" => false, "message" => "Gagal menghapus subtujuan."]);
+        }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
+    }
+}
+
 // Fungsi untuk membuat subtujuan
 function createSubtujuan($db, $tujuan_id, $task) {
     $query = "INSERT INTO subtujuan (tujuan_id, judul, prioritas, date_end, finish) VALUES (:tujuan_id, :judul, :prioritas, :date_end, :finish)";

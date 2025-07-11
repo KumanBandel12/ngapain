@@ -1347,38 +1347,32 @@ async function addTask(goalIndex, event) {
 
 // Toggle task completion
 async function toggleTaskCompletion(goalIndex, taskId) {
-    const goal = goals[goalIndex];
-    if (!goal || !goal.tasks) return;
+  const goal = goals[goalIndex];
+  if (!goal || !goal.tasks) return;
 
-    const task = goal.tasks.find((t) => t.id === taskId);
-    if (task) {
-        task.completed = !task.completed;
+  const task = goal.tasks.find((t) => t.id === taskId);
+  if (task) {
+      const newStatus = !task.completed;
+      try {
+          await TujuanAPI.updateSubtaskStatus(task.id, newStatus);
+          task.completed = newStatus; // Update status di frontend setelah sukses
 
-        // Hitung ulang progress tujuan induk
-        const totalTasks = goal.tasks.length;
-        const completedTasks = goal.tasks.filter(t => t.completed).length;
-        goal.progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-        
-        // Jika semua sub-tugas selesai, tandai tujuan utama sebagai selesai
-        if(completedTasks === totalTasks && totalTasks > 0) {
-            goal.completed = true;
-        } else {
-            goal.completed = false;
-        }
+          // Hitung ulang progress dan status tujuan utama
+          const totalTasks = goal.tasks.length;
+          const completedTasks = goal.tasks.filter(t => t.completed).length;
+          goal.progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+          goal.completed = (completedTasks === totalTasks && totalTasks > 0);
 
-        try {
-            // Kirim seluruh data tujuan yang sudah diupdate
-            await TujuanAPI.update(goal);
-            showNotification(`Status Sub-Tujuan "${task.title}" berhasil diperbarui.`, 'success');
-            renderGoals();
-        } catch (error) {
-            // Kembalikan status jika gagal
-            task.completed = !task.completed;
-            console.error("Gagal memperbarui Sub-Tujuan:", error);
-            showNotification("Gagal memperbarui status Sub-Tujuan.", "error");
-            renderGoals();
-        }
-    }
+          // Kirim pembaruan untuk progress tujuan utama
+          await TujuanAPI.update(goal);
+
+          showNotification(`Status Sub-Tujuan "${task.title}" berhasil diperbarui.`, 'success');
+          renderGoals(); // Render ulang untuk menampilkan perubahan
+      } catch (error) {
+          console.error("Gagal memperbarui status Sub-Tujuan:", error);
+          showNotification("Gagal memperbarui status Sub-Tujuan.", "error");
+      }
+  }
 }
 
 // Close task modal
@@ -1396,26 +1390,27 @@ function closeTaskModal() {
 // Delete task
 async function deleteTask(goalIndex, taskId) {
   if (confirm("Apakah Anda yakin ingin menghapus Sub-Tujuan ini?")) {
-    const goalToUpdate = goals[goalIndex]
-    const taskIndex = goalToUpdate.tasks.findIndex((task) => task.id === taskId)
-
-    if (taskIndex >= 0) {
-      // Simpan task yang akan dihapus untuk rollback jika gagal
-      const removedTask = goalToUpdate.tasks.splice(taskIndex, 1)[0]
-
       try {
-        showLoading(true)
-        await TujuanAPI.update(goalToUpdate)
-        showNotification("Subtujuan berhasil dihapus.", "success")
+          await TujuanAPI.deleteSubtask(taskId);
+          
+          // Hapus dari array di frontend
+          const goal = goals[goalIndex];
+          goal.tasks = goal.tasks.filter(t => t.id !== taskId);
+
+          // Hitung ulang progress
+          const totalTasks = goal.tasks.length;
+          const completedTasks = goal.tasks.filter(t => t.completed).length;
+          goal.progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+          // Kirim pembaruan untuk progress tujuan utama
+          await TujuanAPI.update(goal);
+
+          showNotification("Subtujuan berhasil dihapus.", "success");
+          renderGoals(); // Render ulang
       } catch (error) {
-        showNotification("Gagal menghapus subtujuan: " + error.message, "error")
-        // Kembalikan task jika API gagal
-        goalToUpdate.tasks.splice(taskIndex, 0, removedTask)
-      } finally {
-        showLoading(false)
-        renderGoals() // Selalu render ulang untuk menampilkan kondisi terakhir
+          console.error("Gagal menghapus Sub-Tujuan:", error);
+          showNotification("Gagal menghapus Sub-Tujuan.", "error");
       }
-    }
   }
 }
 

@@ -214,6 +214,31 @@ class TujuanAPI {
       throw new Error(`Failed to delete goal: ${error.message}`)
     }
   }
+
+  static async updateSubtaskStatus(subtujuanId, isCompleted) {
+    try {
+      return await API.put("tujuan.php", {
+        action: "update_subtask_status",
+        subtujuan_id: subtujuanId,
+        completed: isCompleted,
+      });
+    } catch (error) {
+      console.error("Update Subtask Status API Error:", error);
+      throw new Error(`Failed to update subtask status: ${error.message}`);
+    }
+  }
+
+  static async deleteSubtask(subtujuanId) {
+    try {
+      return await API.post("tujuan.php", {
+        action: "delete_subtask",
+        subtujuan_id: subtujuanId,
+      });
+    } catch (error) {
+      console.error("Delete Subtask API Error:", error);
+      throw new Error(`Failed to delete subtask: ${error.message}`);
+    }
+  }
 }
 
 // Tugas API
